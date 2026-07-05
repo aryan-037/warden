@@ -13,7 +13,12 @@ services:
         sync: false
       - key: DATA_DIR
         value: /app/data
-    disk:
-      name: warden-data
-      mountPath: /app/data
-      sizeGB: 1
+    # NOTE: Render's free plan can't attach a persistent disk — your SQLite
+    # database resets on every restart/redeploy on this plan. Fine for a demo.
+    # To make data persist, upgrade to a paid plan and uncomment below:
+    #
+    # plan: starter
+    # disk:
+    #   name: warden-data
+    #   mountPath: /app/data
+    #   sizeGB: 1
